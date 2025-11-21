@@ -1,0 +1,27 @@
+{
+  "name": "video-converter",
+  "version": "1.0.0",
+  "description": "A Bun/Node CLI to convert videos using FFmpeg",
+  "main": "dist/video-converter.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "bun run build && bun dist/video-converter.js",
+    "webm": "bun run build && bun dist/video-converter.js --format=webm",
+    "mp4": "bun run build && bun dist/video-converter.js --format=mp4",
+    "both": "bun run webm && bun run mp4",
+    "mp4:preset": "bun run build && bun dist/video-converter.js --format=mp4 -- -c:v libx264 -b:v 2.5M -maxrate 2.5M -bufsize 5M -crf 28 -preset slow -vf \"scale='min(1920,iw)':'min(1080,ih)':force_original_aspect_ratio=decrease,setsar=1,pad=ceil(iw/2)*2:ceil(ih/2)*2\" -r 30 -c:a aac -b:a 128k",
+    "webm:preset": "bun run build && bun dist/video-converter.js --format=webm -- -c:v libvpx-vp9 -b:v 1.5M -crf 32 -vf \"scale='min(1920,iw)':'min(1080,ih)':force_original_aspect_ratio=decrease,setsar=1,pad=ceil(iw/2)*2:ceil(ih/2)*2\" -r 30 -c:a libopus -b:a 96k",
+    "both:preset": "bun run mp4:preset && bun run webm:preset",
+    "webm:overwrite": "bun run build && bun dist/video-converter.js --format=webm --overwrite",
+    "mp4:overwrite": "bun run build && bun dist/video-converter.js --format=mp4 --overwrite"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8",
+    "ffmpeg-static": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.5",
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  }
+}
