@@ -5,9 +5,9 @@
 A lightweight, portable CLI to batch-convert videos using FFmpeg.
 Supports custom flags, presets, and both MP4 (H.264) and WebM (VP9) formats.
 
-🟢 No system FFmpeg required — FFmpeg is bundled automatically via `ffmpeg-static`.
-🟢 Cross-platform: macOS, Linux, Windows
-🟢 Works with Node, Bun, or npm
+- 🟢 No system FFmpeg required — FFmpeg is bundled automatically via `ffmpeg-static`.
+- 🟢 Cross-platform: macOS, Linux, Windows
+- 🟢 Works with Node, Bun, or npm
 
 ---
 
